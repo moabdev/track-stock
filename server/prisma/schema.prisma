@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  seed = "prisma/seed.ts"
+  seed     = "prisma/seed.ts"
 }
 
 datasource db {
@@ -68,7 +68,7 @@ model Purchases {
 model SalesSummary {
   id               String   @id @default(cuid())
   totalValue       Float
-  changePercentage Float
+  changePercentage Float?
   created_at       DateTime @default(now())
   updated_at       DateTime @updatedAt
 }
@@ -76,15 +76,15 @@ model SalesSummary {
 model PurchaseSummary {
   id               String   @id @default(cuid())
   totalValue       Float
-  changePercentage Float
+  changePercentage Float?
   created_at       DateTime @default(now())
   updated_at       DateTime @updatedAt
 }
 
 model ExpenseSummary {
   id               String              @id @default(cuid())
-  totalValue       Float
-  changePercentage Float
+  totalExpenses    Float
+  changePercentage Float?
   created_at       DateTime            @default(now())
   updated_at       DateTime            @updatedAt
   categories       ExpenseByCategory[]
