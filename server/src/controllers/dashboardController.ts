@@ -3,8 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-
-export const getDashboardMetrics= async (
+export const getDashboardMetrics = async (
   req: Request,
   res: Response
 ): Promise<void> => {
@@ -12,54 +11,50 @@ export const getDashboardMetrics= async (
     const popularProducts = await prisma.products.findMany({
       take: 15,
       orderBy: {
-        stockQuantity: "desc"
+        stockQuantity: "desc",
       },
     });
-
-    const saleSummary = await prisma.salesSummary.findMany({
+    const salesSummary = await prisma.salesSummary.findMany({
       take: 5,
       orderBy: {
-        created_at: "desc"
+        date: "desc",
       },
     });
-
     const purchaseSummary = await prisma.purchaseSummary.findMany({
       take: 5,
       orderBy: {
-        created_at: "desc"
+        date: "desc",
       },
     });
-
     const expenseSummary = await prisma.expenseSummary.findMany({
       take: 5,
       orderBy: {
-        created_at: "desc"
+        date: "desc",
       },
     });
-
-    const expenseByCategorySummaryRaw = await prisma.expenseByCategory.findMany({
-      take: 5,
-      orderBy: {
-        created_at: "desc"
-      },
-    });
-
-    const expenseByCategorySummary = expenseByCategorySummaryRaw.map((item) => {
-      return {
+    const expenseByCategorySummaryRaw = await prisma.expenseByCategory.findMany(
+      {
+        take: 5,
+        orderBy: {
+          date: "desc",
+        },
+      }
+    );
+    const expenseByCategorySummary = expenseByCategorySummaryRaw.map(
+      (item) => ({
         ...item,
         amount: item.amount.toString(),
-      };
-    });
+      })
+    );
 
     res.json({
       popularProducts,
-      saleSummary,
+      salesSummary,
       purchaseSummary,
       expenseSummary,
-      expenseByCategorySummary
-    })
-    
+      expenseByCategorySummary,
+    });
   } catch (error) {
     res.status(500).json({ message: "Error retrieving dashboard metrics" });
   }
-}
+};
