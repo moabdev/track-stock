@@ -13,75 +13,101 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  userId String @id
+model User {
+  userId String @id  @default(cuid())
   name   String
-  email  String
+  email  String @unique
+  hashedPassword String
+  lastLogin DateTime @default(now())
+  isVerified Boolean @default(false)
+  date DateTime @default(now())
+  resetPasswordToken String?
+  resetPassordExpiresAt DateTime?
+  verificationToken String
+  verificationTokenExpiresAt DateTime
+
+  @@map("users")
 }
 
-model Products {
-  productId     String      @id
+model Product {
+  productId     String     @id  @default(cuid())
   name          String
   price         Float
   rating        Float?
   stockQuantity Int
-  Sales         Sales[]
-  Purchases     Purchases[]
+  Sales         Sale[]
+  Purchases     Purchase[]
+
+  @@map("products")
 }
 
-model Sales {
-  saleId      String   @id
+model Sale {
+  saleId      String   @id  @default(cuid())
   productId   String
   timestamp   DateTime
   quantity    Int
   unitPrice   Float
   totalAmount Float
-  product     Products @relation(fields: [productId], references: [productId])
+  product     Product  @relation(fields: [productId], references: [productId])
+
+  @@map("sales")
 }
 
-model Purchases {
-  purchaseId String   @id
+model Purchase {
+  purchaseId String   @id  @default(cuid())
   productId  String
   timestamp  DateTime
   quantity   Int
   unitCost   Float
   totalCost  Float
-  product    Products @relation(fields: [productId], references: [productId])
+  product    Product  @relation(fields: [productId], references: [productId])
+
+  @@map("purchases")
 }
 
-model Expenses {
-  expenseId String   @id
+model Expense {
+  expenseId String   @id  @default(cuid())
   category  String
   amount    Float
   timestamp DateTime
+
+  @@map("expenses")
 }
 
-model SalesSummary {
-  salesSummaryId   String   @id
+model SaleSummary {
+  salesSummaryId   String   @id  @default(cuid())
   totalValue       Float
   changePercentage Float?
   date             DateTime
+
+  @@map("sales_summaries")
 }
 
 model PurchaseSummary {
-  purchaseSummaryId String   @id
+  purchaseSummaryId String   @id  @default(cuid())
   totalPurchased    Float
   changePercentage  Float?
   date              DateTime
+
+  @@map("purchase_summaries")
 }
 
 model ExpenseSummary {
-  expenseSummaryId  String              @id
+  expenseSummaryId  String              @id  @default(cuid())
   totalExpenses     Float
   date              DateTime
   ExpenseByCategory ExpenseByCategory[]
+
+  @@map("expense_summaries")
 }
 
 model ExpenseByCategory {
-  expenseByCategoryId String         @id
+  expenseByCategoryId String         @id  @default(cuid())
   expenseSummaryId    String
   category            String
   amount              BigInt
   date                DateTime
   expenseSummary      ExpenseSummary @relation(fields: [expenseSummaryId], references: [expenseSummaryId])
+
+  @@map("expenses_by_category")
 }

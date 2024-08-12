@@ -9,7 +9,7 @@ export const getProducts = async (
 ): Promise<void> => {
   try {
     const search = req.query.search?.toString();
-    const products = await prisma.products.findMany({
+    const products = await prisma.product.findMany({
       where: {
         name: {
           contains: search,
@@ -28,7 +28,7 @@ export const createProduct = async (
 ): Promise<void> => {
   try {
     const { productId, name, price, rating, stockQuantity } = req.body;
-    const product = await prisma.products.create({
+    const product = await prisma.product.create({
       data: {
         productId,
         name,
