@@ -14,23 +14,23 @@ datasource db {
 }
 
 model User {
-  userId String @id  @default(cuid())
-  name   String
-  email  String @unique
-  hashedPassword String
-  lastLogin DateTime @default(now())
-  isVerified Boolean @default(false)
-  date DateTime @default(now())
-  resetPasswordToken String?
-  resetPassordExpiresAt DateTime?
-  verificationToken String
-  verificationTokenExpiresAt DateTime
+  userId                      String    @id @default(cuid())
+  name                        String
+  email                       String    @unique
+  hashedPassword              String
+  lastLogin                   DateTime  @default(now())
+  isVerified                  Boolean   @default(false)
+  date                        DateTime  @default(now())
+  resetPasswordToken          String?
+  resetPasswordTokenExpiresAt DateTime?
+  verificationToken           String?
+  verificationTokenExpiresAt  DateTime?
 
   @@map("users")
 }
 
 model Product {
-  productId     String     @id  @default(cuid())
+  productId     String     @id @default(cuid())
   name          String
   price         Float
   rating        Float?
@@ -42,7 +42,7 @@ model Product {
 }
 
 model Sale {
-  saleId      String   @id  @default(cuid())
+  saleId      String   @id @default(cuid())
   productId   String
   timestamp   DateTime
   quantity    Int
@@ -54,7 +54,7 @@ model Sale {
 }
 
 model Purchase {
-  purchaseId String   @id  @default(cuid())
+  purchaseId String   @id @default(cuid())
   productId  String
   timestamp  DateTime
   quantity   Int
@@ -66,7 +66,7 @@ model Purchase {
 }
 
 model Expense {
-  expenseId String   @id  @default(cuid())
+  expenseId String   @id @default(cuid())
   category  String
   amount    Float
   timestamp DateTime
@@ -75,7 +75,7 @@ model Expense {
 }
 
 model SaleSummary {
-  salesSummaryId   String   @id  @default(cuid())
+  salesSummaryId   String   @id @default(cuid())
   totalValue       Float
   changePercentage Float?
   date             DateTime
@@ -84,7 +84,7 @@ model SaleSummary {
 }
 
 model PurchaseSummary {
-  purchaseSummaryId String   @id  @default(cuid())
+  purchaseSummaryId String   @id @default(cuid())
   totalPurchased    Float
   changePercentage  Float?
   date              DateTime
@@ -93,7 +93,7 @@ model PurchaseSummary {
 }
 
 model ExpenseSummary {
-  expenseSummaryId  String              @id  @default(cuid())
+  expenseSummaryId  String              @id @default(cuid())
   totalExpenses     Float
   date              DateTime
   ExpenseByCategory ExpenseByCategory[]
@@ -102,7 +102,7 @@ model ExpenseSummary {
 }
 
 model ExpenseByCategory {
-  expenseByCategoryId String         @id  @default(cuid())
+  expenseByCategoryId String         @id @default(cuid())
   expenseSummaryId    String
   category            String
   amount              BigInt

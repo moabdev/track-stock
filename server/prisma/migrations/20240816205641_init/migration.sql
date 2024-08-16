@@ -8,9 +8,9 @@ CREATE TABLE "users" (
     "isVerified" BOOLEAN NOT NULL DEFAULT false,
     "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "resetPasswordToken" TEXT,
-    "resetPassordExpiresAt" TIMESTAMP(3),
-    "verificationToken" TEXT NOT NULL,
-    "verificationTokenExpiresAt" TIMESTAMP(3) NOT NULL,
+    "resetPasswordTokenExpiresAt" TIMESTAMP(3),
+    "verificationToken" TEXT,
+    "verificationTokenExpiresAt" TIMESTAMP(3),
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("userId")
 );
