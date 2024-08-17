@@ -65,23 +65,25 @@ A aplicação StockControl é dividida em duas partes principais: **Frontend** e
 -**Banco de Dados**: Gerencia os dados da aplicação, armazenando informações sobre produtos, movimentações de estoque, e usuários.
 
 ## 📝 Como Executar o Projeto
-### Pré-requisitos-**Node.js** e **npm/yarn**-**PostgreSQL**
+### Pré-requisitos
+-**Node.js** e **npm/yarn**
+-**PostgreSQL**
 ### Passos
-1.**Clone o repositório**:
+1. **Clone o repositório**:
 
 ```bash
 git clone https://github.com/seu-usuario/stock-control.git
 cd stock-control
 ```
 
-2.**Instale as dependências**:
+2. **Instale as dependências**:
 ```bash
 npm install
 # ou
 yarn install
 ``` 
 
-3.**Configure as variáveis de ambiente**:
+3. **Configure as variáveis de ambiente**:
 
 - Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
 ```bash
@@ -92,13 +94,13 @@ EMAIL_PORT=587
 EMAIL_USER=seu_email@provedor.com
 EMAIL_PASS=sua_senha
 ``` 
-4.**Execute as migrações do banco de dados**:
+4. **Execute as migrações do banco de dados**:
 
 ```bash
 npx prisma migrate dev
 ```
 
-5.**Inicie o servidor**:
+5. **Inicie o servidor**:
 ```bash
 npm run dev
 
@@ -106,7 +108,7 @@ npm run dev
 
 yarn dev
 ```
-6.**Acesse a aplicação**: - Acesse `http://localhost:3000` no seu navegador.
+6. **Acesse a aplicação**: - Acesse `http://localhost:3000` no seu navegador.
 
 ## 🔒 Autenticação
 
