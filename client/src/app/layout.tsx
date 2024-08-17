@@ -8,8 +8,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TrackSTOCK",
-  description: "Track your stocks with TrackSTOCK",
+  title: "Stock Control",
+  description: "Track your stocks with Stock Control",
 };
 
 export default function RootLayout({

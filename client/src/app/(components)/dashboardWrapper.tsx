@@ -65,7 +65,7 @@ export const Logo = () => {
         animate={{ opacity: 1 }}
         className="font-medium text-black dark:text-white whitespace-pre"
       >
-        <h1 className="font-extrabold text-2xl">TrackSTOCK</h1>
+        <h1 className="font-extrabold text-2xl">Stock Control</h1>
       </motion.span>
     </Link>
   );
