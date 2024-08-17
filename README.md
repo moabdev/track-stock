@@ -102,7 +102,7 @@ npm run dev
 
 yarn dev
 ```
-6.**Acesse a aplicação**: - Acesse`http://localhost:3000` no seu navegador.
+6.**Acesse a aplicação**: - Acesse `http://localhost:3000` no seu navegador.
 
 ## 🔒 Autenticação
 
