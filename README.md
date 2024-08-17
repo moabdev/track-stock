@@ -19,6 +19,29 @@
   -**PostgreSQL**: Sistema de gerenciamento de banco de dados relacional.
 
 ## 🏗️ Arquitetura da Aplicação
+├── frontend/
+│   ├── components/        # Componentes reutilizáveis da interface de usuário
+│   ├── pages/             # Páginas da aplicação (rotas do Next.js)
+│   ├── styles/            # Arquivos de estilo utilizando Tailwind CSS
+│   ├── public/            # Arquivos públicos (imagens, ícones, etc.)
+│   └── ...                # Outros arquivos de configuração do Next.js
+│
+├── backend/
+│   ├── controllers/       # Lógica de negócios e controle de fluxo das rotas
+│   ├── models/            # Modelos de dados definidos com Prisma ORM
+│   ├── routes/            # Definição das rotas da API utilizando Express.js
+│   ├── services/          # Serviços auxiliares (e.g., envio de e-mails, autenticação)
+│   ├── middleware/        # Middleware para autenticação e outras validações
+│   └── ...                # Outros arquivos de configuração do servidor
+│
+├── prisma/
+│   ├── schema.prisma      # Definição do schema do banco de dados Prisma
+│   └── migrations/        # Migrações do banco de dados geradas pelo Prisma
+│
+├── .env# Arquivo de variáveis de ambiente (não incluído no controle de versão)
+├── package.json           # Arquivo de configuração do npm/yarn
+├── README.md              # Documentação do projeto
+└── ...                    # Outros arquivos de configuração e documentação
 ## 📝 Como Executar o Projeto### Pré-requisitos-**Node.js** e **npm/yarn**-**PostgreSQL**### Passos1.**Clone o repositório**:
     ```bash
     git clone https://github.com/seu-usuario/stockcontrol.git
