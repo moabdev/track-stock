@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "users" (
-    "userId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "hashedPassword" TEXT NOT NULL,
@@ -12,102 +12,102 @@ CREATE TABLE "users" (
     "verificationToken" TEXT,
     "verificationTokenExpiresAt" TIMESTAMP(3),
 
-    CONSTRAINT "users_pkey" PRIMARY KEY ("userId")
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "products" (
-    "productId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
     "rating" DOUBLE PRECISION,
     "stockQuantity" INTEGER NOT NULL,
 
-    CONSTRAINT "products_pkey" PRIMARY KEY ("productId")
+    CONSTRAINT "products_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "sales" (
-    "saleId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "productId" TEXT NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL,
     "quantity" INTEGER NOT NULL,
     "unitPrice" DOUBLE PRECISION NOT NULL,
     "totalAmount" DOUBLE PRECISION NOT NULL,
 
-    CONSTRAINT "sales_pkey" PRIMARY KEY ("saleId")
+    CONSTRAINT "sales_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "purchases" (
-    "purchaseId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "productId" TEXT NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL,
     "quantity" INTEGER NOT NULL,
     "unitCost" DOUBLE PRECISION NOT NULL,
     "totalCost" DOUBLE PRECISION NOT NULL,
 
-    CONSTRAINT "purchases_pkey" PRIMARY KEY ("purchaseId")
+    CONSTRAINT "purchases_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "expenses" (
-    "expenseId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "category" TEXT NOT NULL,
     "amount" DOUBLE PRECISION NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "expenses_pkey" PRIMARY KEY ("expenseId")
+    CONSTRAINT "expenses_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "sales_summaries" (
-    "salesSummaryId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "totalValue" DOUBLE PRECISION NOT NULL,
     "changePercentage" DOUBLE PRECISION,
     "date" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "sales_summaries_pkey" PRIMARY KEY ("salesSummaryId")
+    CONSTRAINT "sales_summaries_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "purchase_summaries" (
-    "purchaseSummaryId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "totalPurchased" DOUBLE PRECISION NOT NULL,
     "changePercentage" DOUBLE PRECISION,
     "date" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "purchase_summaries_pkey" PRIMARY KEY ("purchaseSummaryId")
+    CONSTRAINT "purchase_summaries_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "expense_summaries" (
-    "expenseSummaryId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "totalExpenses" DOUBLE PRECISION NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "expense_summaries_pkey" PRIMARY KEY ("expenseSummaryId")
+    CONSTRAINT "expense_summaries_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "expenses_by_category" (
-    "expenseByCategoryId" TEXT NOT NULL,
+    "id" TEXT NOT NULL,
     "expenseSummaryId" TEXT NOT NULL,
     "category" TEXT NOT NULL,
     "amount" BIGINT NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "expenses_by_category_pkey" PRIMARY KEY ("expenseByCategoryId")
+    CONSTRAINT "expenses_by_category_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- AddForeignKey
-ALTER TABLE "sales" ADD CONSTRAINT "sales_productId_fkey" FOREIGN KEY ("productId") REFERENCES "products"("productId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "sales" ADD CONSTRAINT "sales_productId_fkey" FOREIGN KEY ("productId") REFERENCES "products"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "purchases" ADD CONSTRAINT "purchases_productId_fkey" FOREIGN KEY ("productId") REFERENCES "products"("productId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "purchases" ADD CONSTRAINT "purchases_productId_fkey" FOREIGN KEY ("productId") REFERENCES "products"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "expenses_by_category" ADD CONSTRAINT "expenses_by_category_expenseSummaryId_fkey" FOREIGN KEY ("expenseSummaryId") REFERENCES "expense_summaries"("expenseSummaryId") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "expenses_by_category" ADD CONSTRAINT "expenses_by_category_expenseSummaryId_fkey" FOREIGN KEY ("expenseSummaryId") REFERENCES "expense_summaries"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

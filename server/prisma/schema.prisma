@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  userId                      String    @id @default(cuid())
+  id                          String    @id @default(cuid())
   name                        String
   email                       String    @unique
   hashedPassword              String
@@ -30,7 +30,7 @@ model User {
 }
 
 model Product {
-  productId     String     @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String
   price         Float
   rating        Float?
@@ -42,31 +42,31 @@ model Product {
 }
 
 model Sale {
-  saleId      String   @id @default(cuid())
+  id          String   @id @default(cuid())
   productId   String
   timestamp   DateTime
   quantity    Int
   unitPrice   Float
   totalAmount Float
-  product     Product  @relation(fields: [productId], references: [productId])
+  product     Product  @relation(fields: [productId], references: [id])
 
   @@map("sales")
 }
 
 model Purchase {
-  purchaseId String   @id @default(cuid())
-  productId  String
-  timestamp  DateTime
-  quantity   Int
-  unitCost   Float
-  totalCost  Float
-  product    Product  @relation(fields: [productId], references: [productId])
+  id        String   @id @default(cuid())
+  productId String
+  timestamp DateTime
+  quantity  Int
+  unitCost  Float
+  totalCost Float
+  product   Product  @relation(fields: [productId], references: [id])
 
   @@map("purchases")
 }
 
 model Expense {
-  expenseId String   @id @default(cuid())
+  id        String   @id @default(cuid())
   category  String
   amount    Float
   timestamp DateTime
@@ -75,7 +75,7 @@ model Expense {
 }
 
 model SaleSummary {
-  salesSummaryId   String   @id @default(cuid())
+  id               String   @id @default(cuid())
   totalValue       Float
   changePercentage Float?
   date             DateTime
@@ -84,16 +84,16 @@ model SaleSummary {
 }
 
 model PurchaseSummary {
-  purchaseSummaryId String   @id @default(cuid())
-  totalPurchased    Float
-  changePercentage  Float?
-  date              DateTime
+  id               String   @id @default(cuid())
+  totalPurchased   Float
+  changePercentage Float?
+  date             DateTime
 
   @@map("purchase_summaries")
 }
 
 model ExpenseSummary {
-  expenseSummaryId  String              @id @default(cuid())
+  id                String              @id @default(cuid())
   totalExpenses     Float
   date              DateTime
   ExpenseByCategory ExpenseByCategory[]
@@ -102,12 +102,12 @@ model ExpenseSummary {
 }
 
 model ExpenseByCategory {
-  expenseByCategoryId String         @id @default(cuid())
-  expenseSummaryId    String
-  category            String
-  amount              BigInt
-  date                DateTime
-  expenseSummary      ExpenseSummary @relation(fields: [expenseSummaryId], references: [expenseSummaryId])
+  id               String         @id @default(cuid())
+  expenseSummaryId String
+  category         String
+  amount           BigInt
+  date             DateTime
+  expenseSummary   ExpenseSummary @relation(fields: [expenseSummaryId], references: [id])
 
   @@map("expenses_by_category")
 }

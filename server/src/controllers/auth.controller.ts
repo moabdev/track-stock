@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 
 import { PrismaClient } from "@prisma/client";
+import { User } from"@prisma/client";
 
 import bcryptjs from "bcryptjs";
 import crypto from "crypto";
@@ -19,6 +20,10 @@ import {
 } from "../mailtrap/emails";
 
 const prisma = new PrismaClient();
+
+interface AuthenticatedRequest extends Request {
+  user?: User;
+}
 
 export const signup = async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
@@ -56,7 +61,7 @@ export const signup = async (req: Request, res: Response) => {
       },
     });
 
-    generateTokenAndSetCookie(res, user.userId);
+    generateTokenAndSetCookie(res, user.id);
 
     sendVerificationEmail(user.email, verificationToken);
 
@@ -64,7 +69,7 @@ export const signup = async (req: Request, res: Response) => {
       success: true,
       message: "User created!",
       user: {
-        id: user.userId,
+        id: user.id,
         name: user.name,
         email: user.email,
         isVerified: user.isVerified,
@@ -96,7 +101,7 @@ export const verifyEmail = async (req: Request, res: Response) => {
 
     await prisma.user.update({
       where: {
-        userId: user.userId,
+        id: user.id,
       },
       data: {
         isVerified: true,
@@ -147,12 +152,12 @@ export const login = async (req: Request, res: Response) => {
       });
     }
 
-    generateTokenAndSetCookie(res, user.userId);
+    generateTokenAndSetCookie(res, user.id);
 
     user.lastLogin = new Date();
     await prisma.user.update({
       where: {
-        userId: user.userId,
+        id: user.id,
       },
       data: {
         lastLogin: new Date(),
@@ -249,7 +254,7 @@ export const resetPassword = async (req: Request, res: Response) => {
 
     await prisma.user.update({
       where: {
-        userId: user.userId,
+        id: user.id,
       },
       data: {
         hashedPassword,
@@ -259,12 +264,35 @@ export const resetPassword = async (req: Request, res: Response) => {
     });
 
     await sendResetSuccessEmail(user.email);
-    
+
     res
       .status(200)
       .json({ success: true, message: "Password reset successfully" });
   } catch (error: any) {
     console.error(error);
     res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+export const checkAuth = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const user = await prisma.user.findFirst({
+      where: {
+        id: req.user?.id,
+      }
+    })
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    res.status(200).json({
+      success: true,
+      user: { name: user.name, email: user.email, id: user.id },
+    });
+  } catch (error: any) {
+    console.error("Error in check auth", error);
+    res.status(400).json({ success: false, message: error.message });
   }
 };

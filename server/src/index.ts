@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 
 /* ROUTE IMPORTS */
 import dashboardRoutes from "./routes/dashboard.route";
@@ -18,7 +19,8 @@ dotenv.config();
 const app = express();
 
 /* MIDDLEWARE */
-app.use(express.json());
+app.use(express.json()); // to support JSON-encoded bodies
+app.use(cookieParser()); // allow us to parse incoming cookies
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
