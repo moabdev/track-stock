@@ -64,7 +64,10 @@ A aplicação StockControl é dividida em duas partes principais: **Frontend** e
 
 -**Banco de Dados**: Gerencia os dados da aplicação, armazenando informações sobre produtos, movimentações de estoque, e usuários.
 
-## 📝 Como Executar o Projeto### Pré-requisitos-**Node.js** e **npm/yarn**-**PostgreSQL**### Passos1.**Clone o repositório**:
+## 📝 Como Executar o Projeto
+### Pré-requisitos-**Node.js** e **npm/yarn**-**PostgreSQL**
+### Passos
+1.**Clone o repositório**:
 
 ```bash
 git clone https://github.com/seu-usuario/stock-control.git
