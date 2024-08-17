@@ -22,31 +22,6 @@
 
 A aplicação StockControl é dividida em duas partes principais: **Frontend** e **Backend**. Abaixo está uma visão geral da estrutura do projeto:
 
-├── frontend/
-│ ├── components/ # Componentes reutilizáveis da interface de usuário
-│ ├── pages/ # Páginas da aplicação (rotas do Next.js)
-│ ├── styles/ # Arquivos de estilo utilizando Tailwind CSS
-│ ├── public/ # Arquivos públicos (imagens, ícones, etc.)
-│ └── ... # Outros arquivos de configuração do Next.js
-│
-├── backend/
-│ ├── controllers/ # Lógica de negócios e controle de fluxo das rotas
-│ ├── models/ # Modelos de dados definidos com Prisma ORM
-│ ├── routes/ # Definição das rotas da API utilizando Express.js
-│ ├── services/ # Serviços auxiliares (e.g., envio de e-mails, autenticação)
-│ ├── middleware/ # Middleware para autenticação e outras validações
-│ └── ... # Outros arquivos de configuração do servidor
-│
-├── prisma/
-│ ├── schema.prisma # Definição do schema do banco de dados Prisma
-│ └── migrations/ # Migrações do banco de dados geradas pelo Prisma
-│
-├── .env # Arquivo de variáveis de ambiente (não incluído no controle de versão)
-├── package.json # Arquivo de configuração do npm/yarn
-├── README.md # Documentação do projeto
-└── ... # Outros arquivos de configuração e documentação
-
-
 
 ### Descrição dos Diretórios Principais-**frontend/**: Contém o código-fonte do frontend da aplicação. Aqui estão os componentes, páginas e estilos que formam a interface do usuário.
 
