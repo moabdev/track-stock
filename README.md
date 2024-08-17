@@ -87,9 +87,9 @@ A aplicação StockControl é dividida em duas partes principais: **Frontend** e
  EMAIL_PASS=sua_senha
  ` 4.**Execute as migrações do banco de dados**:
 
-      ```bash
-      npx prisma migrate dev
-      ```
+```bash
+npx prisma migrate dev
+```
 
   5.**Inicie o servidor**:
   `bash
