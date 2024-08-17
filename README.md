@@ -71,23 +71,23 @@ cd stock-control
 ```
 
 2.**Instale as dependências**:
-`bash
+```bash
 npm install
 # ou
 yarn install
-` 
+``` 
 
 3.**Configure as variáveis de ambiente**:
 
 - Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
-`bash
+```bash
 DATABASE_URL=postgresql://usuario:senha@localhost:5432/nomedobanco
 JWT_SECRET=sua_chave_secreta
 EMAIL_HOST=smtp.seuprovedor.com
 EMAIL_PORT=587
 EMAIL_USER=seu_email@provedor.com
 EMAIL_PASS=sua_senha
-` 
+``` 
 4.**Execute as migrações do banco de dados**:
 
 ```bash
@@ -95,13 +95,14 @@ npx prisma migrate dev
 ```
 
 5.**Inicie o servidor**:
-`bash
+```bash
 npm run dev
 
 # ou
 
 yarn dev
-`6.**Acesse a aplicação**: - Acesse`http://localhost:3000` no seu navegador.
+```
+6.**Acesse a aplicação**: - Acesse`http://localhost:3000` no seu navegador.
 
 ## 🔒 Autenticação
 
