@@ -67,6 +67,7 @@ A aplicação StockControl é dividida em duas partes principais: **Frontend** e
 ## 📝 Como Executar o Projeto
 ### Pré-requisitos
 -**Node.js** e **npm/yarn**
+
 -**PostgreSQL**
 ### Passos
 1. **Clone o repositório**:
