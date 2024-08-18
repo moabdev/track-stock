@@ -1,5 +1,7 @@
-import { DashboardWrapper } from "../../components/dashboard/DashboardWrapper";
+import DashboardWrapper from "@/components/dashboard/DashboardWrapper";
 
-export default function Dashboard () {
+const Dashboard = () => {
   return <DashboardWrapper />;
 };
+
+export default Dashboard;

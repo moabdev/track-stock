@@ -6,9 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Bell, Settings } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { toast } from "sonner";
 
-export const Navbar = () => {
+const Navbar = () => {
   return (
     <nav className="flex justify-between items-center w-full mb-7">
       {/* LEFT SIDE */}
@@ -18,7 +17,7 @@ export const Navbar = () => {
           variant="outline"
           type="submit"
           onClick={() => {
-            toast("Pesquisando...");
+            
           }}
         >
           Pesquisar
@@ -58,4 +57,5 @@ export const Navbar = () => {
     </nav>
   );
 };
-//https://assets.aceternity.com/manu.png
+
+export default Navbar;

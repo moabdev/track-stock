@@ -5,11 +5,10 @@ import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { links } from "@/data";
-import { Navbar } from "@/components/navbar/Navbar";
-import { Logo } from "@/components/logo/Logo";
-import { Dashboard } from "./Dashboard";
+import { Logo } from "@/components/logo/Logo";  
+import  Dashboard from "./Dashboard";
 
-export function DashboardWrapper() {
+const DashboardWrapper = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -53,4 +52,6 @@ export function DashboardWrapper() {
       <Dashboard />
     </div>
   );
-}
+};
+
+export default DashboardWrapper;

@@ -1,6 +1,7 @@
-import { Navbar } from "../navbar/Navbar";
+"use client";
+import Navbar from "../navbar/Navbar";
 
-export const Dashboard = () => {
+const Dashboard = () => {
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
@@ -9,3 +10,5 @@ export const Dashboard = () => {
     </div>
   );
 };
+
+export default Dashboard;
