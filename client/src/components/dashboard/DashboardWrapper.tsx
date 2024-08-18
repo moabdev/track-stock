@@ -6,7 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { links } from "@/data";
 import { Logo } from "@/components/logo/Logo";  
-import  Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard";
 
 const DashboardWrapper = () => {
   const [open, setOpen] = useState(false);
