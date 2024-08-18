@@ -16,7 +16,7 @@ export const globalSlice = createSlice({
   reducers: {
     setIsSidebarCollapsed: (state, action: PayloadAction<boolean>) => {
       state.isSidebarCollapsed = action.payload;
-    },// Basically is just a function that updates the global state
+    },
     setIsDarkMode: (state, action: PayloadAction<boolean>) => {
       state.isDarkMode = action.payload;
     },

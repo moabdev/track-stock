@@ -1,6 +1,5 @@
 "use client";
-
-import StoreProvider from "../redux";
+import StoreProvider from "../../app/redux";
 
 export const DashboardLayout = ({
   children,

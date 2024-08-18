@@ -1,6 +1,5 @@
-"use client";
-import { DashboardWrapper } from "../(components)/dashboardWrapper";
+import { DashboardWrapper } from "../../components/dashboard/DashboardWrapper";
 
-export const Dashboard = () => {
+export default function Dashboard () {
   return <DashboardWrapper />;
 };
